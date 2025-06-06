@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch('http://localhost:3000/auth/user', {
+      const res = await fetch('https://cookverse.onrender.com/auth/user', {
         method: 'GET',
         credentials: 'include',
       });
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:3000/auth/logout', {
+      await fetch('https://cookverse.onrender.com/auth/logout', {
         method: 'GET',
         credentials: 'include',
       });

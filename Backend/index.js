@@ -3,6 +3,7 @@ const app=express();
 require('dotenv').config();
 const db=require('./db');
 db();
+const MongoStore = require('connect-mongo');
 const bodyParser = require('body-parser');
 const cors=require('cors');
 const corsOptions = {
@@ -19,9 +20,10 @@ app.use(session({
   secret: "secret",
   resave: false,
   saveUninitialized: true,
-  cookie: {
-    maxAge: 24 * 60 * 60 * 1000 
-  }
+   store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URL, 
+    ttl:24 * 60 * 60 
+  })
 }));
 
 app.use(passport.initialize());

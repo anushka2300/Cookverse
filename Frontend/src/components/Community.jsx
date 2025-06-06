@@ -33,7 +33,7 @@ const RecipeSharingApp = () => {
     setLoading(true);
     try {
 
-      const response = await fetch('http://localhost:3000/community/getpost');
+      const response = await fetch(`https://cookverse.onrender.com/community/getpost`);
       if (response.ok) {
         const data = await response.json();
         setPosts(data);
@@ -81,7 +81,7 @@ const RecipeSharingApp = () => {
       formDataToSend.append('recipe', formData.recipe);
       formDataToSend.append('image', formData.image);
 
-      const response = await fetch(`http://localhost:3000/community/addpost/${formData.userId}`, {
+      const response = await fetch(`https://cookverse.onrender.com/community/addpost/${formData.userId}`, {
         method: 'POST',
         body: formDataToSend
       });
@@ -112,7 +112,7 @@ const RecipeSharingApp = () => {
 
   const handleLike = async (postId) => {
     try {
-      const response = await fetch(`http://localhost:3000/community/${postId}/like`, {
+      const response = await fetch(`https://cookverse.onrender.com/community/${postId}/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -262,9 +262,8 @@ const RecipeSharingApp = () => {
                     </h3>
 
                     <div className="flex items-center text-gray-600 mb-4">
-                      <User className="w-4 h-4 mr-2" />
-                      <span className="text-sm">By {post.username.name}</span>
-                      <Clock className="w-4 h-4 ml-4 mr-2" />
+                       
+                      <Clock className="w-4 h-4  mr-2" />
                       <span className="text-sm">
                         {post.createdAt ? new Date(post.createdAt).toLocaleDateString() : 'Recently'}
                       </span>

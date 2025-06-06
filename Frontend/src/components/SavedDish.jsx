@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart, Trash2 } from 'lucide-react';
-import Navbar from './navbar';
+import { useAuth } from '../AuthContext';
 const SavedDish = () => {
-     const [user,setUser]=useState(null);
      const [favorites, setFavorites] = useState([]);
+     const {user}=useAuth();
     
      const navigate = useNavigate();
   
@@ -14,7 +14,7 @@ const SavedDish = () => {
     const getData=async ()=>{
           const id=user._id
         try{
-            const res=await fetch(`http://localhost:3000/dish/save/${id}`,{
+            const res=await fetch(`https://cookverse.onrender.com/dish/save/${id}`,{
                 method:'GET'
             })
             const data=await res.json();
@@ -28,7 +28,7 @@ const SavedDish = () => {
 
  const removeFavorite = async (dishId) => {
   try {
-    const res = await fetch(`http://localhost:3000/dish/remove/${user._id}/${dishId}`, {
+    const res = await fetch(`https://cookverse.onrender.com/dish/remove/${user._id}/${dishId}`, {
       method: 'DELETE'
     });
     const data = await res.json();
@@ -52,23 +52,11 @@ const SavedDish = () => {
     const handleBackToHome=()=>{
         navigate('/')
     }
-      const getUser=async ()=>{
-       const res=await fetch('http://localhost:3000/auth/user',{
-          method:'GET',
-           credentials: 'include',
-       })
-       const data=await res.json();
-       setUser(data);
-      
-    }
+  
 
     const handleRecipe=(dishid)=>{
       navigate(`/recipe/${user._id}/${dishid}`)
     }
-
-    useEffect(()=>{
-        getUser();
-    },[])
 
      useEffect(() => {
     if (user && user._id) {

@@ -10,7 +10,7 @@ const Recipe = () => {
     const handleplatter = async (id) => {
         try {
             setLoading(true);
-            const res = await fetch('http://localhost:3000/dish/generateRecipeName', {
+            const res = await fetch(`https://cookverse.onrender.com/dish/generateRecipeName`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

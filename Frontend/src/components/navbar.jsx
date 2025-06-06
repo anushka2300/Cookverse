@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Search, UserCircle } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../AuthContext';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Search, UserCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const {user,logout,setUser}=useAuth();
+  const { user, logout, setUser } = useAuth();
   const navigate = useNavigate();
 
   const handleFav = () => {
@@ -16,9 +17,9 @@ const Navbar = () => {
     }
   };
 
- const handleLogout = async () => {
+  const handleLogout = async () => {
     try {
-      await logout(); 
+      await logout();
       setUser(null);
     } catch (err) {
       console.log(`error in logout: ${err}`);
@@ -28,9 +29,9 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
- 
+
   const handleLogin = () => {
-    navigate('/login');
+    navigate("/login");
   };
 
   const handleSearch = (e) => {
@@ -53,16 +54,25 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            <Link
+              to="/"
+              className="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            >
               Home
-            </a>
-            <a href="/about" className="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            </Link>
+            <Link
+              to="/about"
+              className="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            >
               About
-            </a>
-            <a href="/community" className="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            </Link>
+            <Link
+              to="/community"
+              className="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            >
               Community
-            </a>
-           
+            </Link>
+
             <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
@@ -77,15 +87,24 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             {!user ? (
-              <button onClick={handleLogin} className="bg-white cursor-pointer text-orange-600 hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105">
+              <button
+                onClick={handleLogin}
+                className="bg-white cursor-pointer text-orange-600 hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
                 Login
               </button>
             ) : (
               <div className="flex items-center space-x-3 justify-center">
-                <button onClick={handleLogout} className="bg-white cursor-pointer text-orange-600 hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105">
+                <button
+                  onClick={handleLogout}
+                  className="bg-white cursor-pointer text-orange-600 hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+                >
                   Log out
                 </button>
-                <button onClick={handleFav} className="bg-white cursor-pointer text-orange-600 hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105">
+                <button
+                  onClick={handleFav}
+                  className="bg-white cursor-pointer text-orange-600 hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+                >
                   Favourites
                 </button>
                 <UserCircle className="w-8 h-8 text-white" />
@@ -104,7 +123,11 @@ const Navbar = () => {
               onClick={toggleMobileMenu}
               className="bg-white/20 backdrop-blur-sm inline-flex items-center justify-center p-2 rounded-md text-white hover:text-yellow-300 hover:bg-white/30 transition-all duration-200"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>

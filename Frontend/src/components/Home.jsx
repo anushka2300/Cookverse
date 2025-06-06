@@ -17,7 +17,7 @@ const HomePage = () => {
 
   const getDish = async () => {
     try {
-      const res = await fetch('http://localhost:3000/dish/getDish');
+      const res = await fetch(`https://cookverse.onrender.com/dish/getDish`);
       const output = await res.json();
       let dishes = output.data;
 

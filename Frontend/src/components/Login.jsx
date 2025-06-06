@@ -14,7 +14,7 @@ const Login = () => {
   const handleLogin = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch('http://localhost:3000/auth/login', {
+      const res = await fetch(`https://cookverse.onrender.com/auth/login`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -122,7 +122,7 @@ const Login = () => {
 
             
             <a
-              href="http://localhost:3000/auth/google"
+              href={`https://cookverse.onrender.com/auth/google`}
               className="w-full flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300 group hover:shadow-md"
             >
              <img

@@ -30,7 +30,7 @@ export default function DishRecipeGenerator() {
     try{
          const formData = new FormData();
          formData.append('image', image);
-        const res=await fetch('http://localhost:3000/dish/generateRecipe',{
+        const res=await fetch(`https://cookverse.onrender.com/dish/generateRecipe`,{
             method:'POST',
              
             body:formData
@@ -66,7 +66,7 @@ export default function DishRecipeGenerator() {
     formData.append('ingredients', JSON.stringify(ingredients)); 
     formData.append('steps', JSON.stringify(steps));  
    
-          const res=await fetch(`http://localhost:3000/dish/save/${user._id}`,{
+          const res=await fetch(`https://cookverse.onrender.com/dish/save/${user._id}`,{
              method:'POST',
               
              body:formData

@@ -9,7 +9,7 @@ const FavRecip = () => {
 
     const getRec = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/dish/get/${userId}/${dishId}`, {
+            const res = await fetch(`https://cookverse.onrender.com/dish/get/${userId}/${dishId}`, {
                 method: 'GET'
             });
             const data = await res.json();
