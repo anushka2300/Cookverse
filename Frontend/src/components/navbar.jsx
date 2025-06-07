@@ -16,6 +16,9 @@ const Navbar = () => {
       navigate(`/saved/${user._id}`);
     }
   };
+  useEffect(()=>{
+    console.log("user:"+user);
+  },[user])
 
   const handleLogout = async () => {
     try {

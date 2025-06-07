@@ -1,4 +1,4 @@
-// context/AuthContext.js
+
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
         credentials: 'include',
       });
       const data = await res.json();
+      console.log(data);
       setUser(data?._id ? data : null);
     } catch (error) {
       console.error('Error fetching user:', error);

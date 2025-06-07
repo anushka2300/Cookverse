@@ -24,6 +24,7 @@ const Login = () => {
       });
       if (!res.ok) throw new Error('Login failed');
       const user = await res.json();
+      console.log(user);
       setUser(user);
       alert('Login successful');
       navigate('/')
