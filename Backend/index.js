@@ -17,7 +17,7 @@ const session=require('express-session');
 require('./passport');
 
 app.use(session({
-  secret: "secret",
+  secret:process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: false,
    store: MongoStore.create({
