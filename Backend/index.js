@@ -23,7 +23,13 @@ app.use(session({
    store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URL, 
     ttl:24 * 60 * 60 
-  })
+  }),
+   cookie: {
+    httpOnly: true,
+    secure: false,             
+    sameSite: 'lax',           
+    maxAge: 24 * 60 * 60 * 1000  
+  }
 }));
 
 app.use(passport.initialize());
