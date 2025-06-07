@@ -51,8 +51,8 @@ router.get('/logout', async (req, res, next) => {
   }
 });
 
-
 router.get('/user', (req, res) => {
+  console.log("user in fetch:"+(req.user));
   res.json(req.user || null);
 });
 

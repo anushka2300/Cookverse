@@ -19,10 +19,10 @@ require('./passport');
 app.use(session({
   secret: "secret",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
    store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URL, 
-    ttl:24 * 60 * 60 
+    ttl:24 * 60 * 60
   }),
    cookie: {
     httpOnly: true,
