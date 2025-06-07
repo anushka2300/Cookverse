@@ -122,8 +122,8 @@ const Login = () => {
             </div>
 
             
-            <a
-              href={`https://cookverse.onrender.com/auth/google`}
+            <Link
+              to={`https://cookverse.onrender.com/auth/google`}
               className="w-full flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300 group hover:shadow-md"
             >
              <img
@@ -132,16 +132,16 @@ const Login = () => {
                 className="w-5 h-5 mr-3"
             />
               <span className="text-gray-700 font-medium group-hover:text-gray-900">Continue with Google</span>
-            </a>
+            </Link>
           </div>
 
         
           <div className="mt-8 text-center">
             <p className="text-gray-600">
               Don't have an account?{' '}
-              <a href='/signup' className='text-orange-600 hover:text-orange-700 font-semibold transition-colors duration-200'>
+              <Link to='/signup' className='text-orange-600 hover:text-orange-700 font-semibold transition-colors duration-200'>
                 Sign Up
-              </a>
+              </Link>
             </p>
           </div>
         </div>
@@ -150,8 +150,8 @@ const Login = () => {
         <div className="text-center mt-6">
           <p className="text-gray-500 text-sm">
             By signing in, you agree to our{' '}
-            <a href="#" className="text-orange-600 hover:text-orange-700">Terms</a> and{' '}
-            <a href="#" className="text-orange-600 hover:text-orange-700">Privacy Policy</a>
+            <Link to="#" className="text-orange-600 hover:text-orange-700">Terms</Link> and{' '}
+            <Link to="#" className="text-orange-600 hover:text-orange-700">Privacy Policy</Link>
           </p>
         </div>
       </div>

@@ -23,7 +23,6 @@ router.post('/signup',async(req,res)=>{
 })
 
 router.post('/login',passport.authenticate('local'),(req,res)=>{
-  
     res.json(req.user);
 })
 
