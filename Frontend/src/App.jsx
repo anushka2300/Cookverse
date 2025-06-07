@@ -9,7 +9,7 @@ import SavedDish from './components/SavedDish';
 import ImageToRec from './components/ImageToRec';
 import Favrec from './components/favRecip';
 import Community from './components/Community';
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './Protectedroute';
 
 function App() {
   return (
