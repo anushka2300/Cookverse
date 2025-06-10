@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, Search, UserCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,14 +16,15 @@ const Navbar = () => {
       navigate(`/saved/${user._id}`);
     }
   };
-  useEffect(()=>{
-    console.log("user:"+user);
-  },[user])
+  useEffect(() => {
+    console.log("user:" + user);
+  }, [user]);
 
   const handleLogout = async () => {
     try {
       await logout();
       setUser(null);
+      navigate("/");
     } catch (err) {
       console.log(`error in logout: ${err}`);
     }
@@ -132,6 +133,63 @@ const Navbar = () => {
                 <Menu className="h-6 w-6" />
               )}
             </button>
+            {isMobileMenuOpen && (
+              <div className="md:hidden bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 px-4 py-4 space-y-3">
+                <Link
+                  to="/"
+                  className="block text-white hover:text-yellow-300 text-sm font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/about"
+                  className="block text-white hover:text-yellow-300 text-sm font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About
+                </Link>
+                <Link
+                  to="/community"
+                  className="block text-white hover:text-yellow-300 text-sm font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Community
+                </Link>
+                {user ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        handleFav();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block text-white hover:text-yellow-300 text-sm font-medium"
+                    >
+                      Favourites
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleLogout();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block text-white hover:text-yellow-300 text-sm font-medium"
+                    >
+                      Log out
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      handleLogin();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block text-white hover:text-yellow-300 text-sm font-medium"
+                  >
+                    Login
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

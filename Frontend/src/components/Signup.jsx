@@ -41,7 +41,7 @@ const Signup = () => {
           
           <div className="text-center mb-8">
             <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-2xl font-bold text-2xl inline-block shadow-lg mb-4">
-              Logo
+              CookVerse
             </div>
             <h2 className="text-3xl font-bold text-gray-800 mb-2">Join Our Community</h2>
            
@@ -150,7 +150,7 @@ const Signup = () => {
             <p className="text-gray-600">
               Already have an account?{' '}
               <Link to='/login' className='text-orange-600 hover:text-orange-700 font-semibold transition-colors duration-200'>
-                Sign In
+                Log In
               </Link>
             </p>
           </div>
