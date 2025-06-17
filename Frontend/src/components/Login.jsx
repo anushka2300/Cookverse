@@ -52,6 +52,7 @@ const Login = () => {
           credentials: 'include'
         });
         const user = await res.json();
+        console.log("user user:"+user);
          setUser(user);
          alert('login successful');
         navigate('/');
