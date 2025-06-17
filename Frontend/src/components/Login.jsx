@@ -9,6 +9,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { setUser } = useAuth();
+  const { fetchUser } = useAuth();
   const navigate=useNavigate();
 
   const handleLogin = async () => {
@@ -44,25 +45,23 @@ const Login = () => {
     'width=500,height=600'
   );
 
-    window.addEventListener('message', async (event) => {
-    if (event.data === 'success') {
-        
-      try {
-        const res = await fetch('https://cookverse.onrender.com/auth/user', {
-          credentials: 'include'
-        });
-        const user = await res.json();
-        console.log("user user:"+user);
-         setUser(user);
-         alert('login successful');
-        navigate('/');
-      } catch (err) {
-        console.error(err);
-      }finally {
-      setIsLoading(false);
-    }
-    }
-  }, { once: true });   
+  window.addEventListener(
+    'message',
+    async (event) => {
+      if (event.data === 'success') {
+        try {
+          await fetchUser();  
+          alert('Login successful!');
+          navigate('/');
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    },
+    { once: true }
+  );
 };
 
   return (
