@@ -32,7 +32,12 @@ router.get('/google',passport.authenticate('google',{scope:['profile','email']})
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: `${process.env.CLIENT_URL}/login` }),
   function(req, res) {
-    res.redirect(`${process.env.CLIENT_URL}/?login=success`);
+   res.send(`
+  <script>
+    window.opener.postMessage('success', '*');
+    window.close();
+  </script>
+`);
   }
 );
 
