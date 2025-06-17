@@ -37,6 +37,30 @@ const Login = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+     window.open(
+    'https://cookverse.onrender.com/auth/google',
+    '_blank',
+    'width=500,height=600'
+  );
+
+    window.addEventListener('message', async (event) => {
+    if (event.data === 'success') {
+     
+      try {
+        const res = await fetch('https://cookverse.onrender.com/auth/user', {
+          credentials: 'include'
+        });
+        const user = await res.json();
+        setUser(user);
+        navigate('/');
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }, { once: true });   
+};
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -121,11 +145,10 @@ const Login = () => {
               </div>
             </div>
 
-            
-            <Link
-              to={`https://cookverse.onrender.com/auth/google`}
-              className="w-full flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300 group hover:shadow-md"
-            >
+          <button
+  onClick={handleGoogleLogin}
+  className="w-full flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300 group hover:shadow-md"
+>
              <img
                 src="https://developers.google.com/identity/images/g-logo.png"
                 alt="Google Logo"

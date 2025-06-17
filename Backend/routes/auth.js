@@ -27,14 +27,15 @@ router.post('/login',passport.authenticate('local'),(req,res)=>{
 })
 
 router.get('/google',passport.authenticate('google',{scope:['profile','email']}));
-
-router.get('/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: `${process.env.CLIENT_URL}/login`,
-    successRedirect: `${process.env.CLIENT_URL}/`
-  })
-);
  
+ 
+router.get('/google/callback',
+  passport.authenticate('google', { failureRedirect: `${process.env.CLIENT_URL}/login` }),
+  function(req, res) {
+    res.redirect(`${process.env.CLIENT_URL}/?login=success`);
+  }
+);
+
 
 router.get('/logout', async (req, res, next) => {
   try {
