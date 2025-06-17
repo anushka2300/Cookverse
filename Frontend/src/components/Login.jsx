@@ -28,7 +28,7 @@ const Login = () => {
       setUser(user);
       alert('Login successful');
       navigate('/')
-      console.log(user);
+   
     } catch (err) {
       console.log(err);
       alert('Login failed');
@@ -46,17 +46,20 @@ const Login = () => {
 
     window.addEventListener('message', async (event) => {
     if (event.data === 'success') {
-     
+        
       try {
         const res = await fetch('https://cookverse.onrender.com/auth/user', {
           credentials: 'include'
         });
         const user = await res.json();
-        setUser(user);
+         setUser(user);
+         alert('login successful');
         navigate('/');
       } catch (err) {
         console.error(err);
-      }
+      }finally {
+      setIsLoading(false);
+    }
     }
   }, { once: true });   
 };
