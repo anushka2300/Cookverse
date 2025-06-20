@@ -7,7 +7,7 @@ const MongoStore = require('connect-mongo');
 const bodyParser = require('body-parser');
 const cors=require('cors');
 const corsOptions = {
-  origin: ['http://localhost:5173','https://cookverse.vercel.app','https://cookverse-frontend.onrender.com'], 
+  origin: ['http://localhost:5173','https://cookverse-frontend.onrender.com'], 
   credentials: true
 };
 app.use(cors(corsOptions));
