@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { ChefHat, Camera, Upload, Users, Shield, Zap, ArrowRight, CheckCircle, Target, Award } from 'lucide-react';
 import Footer from './footer';
+import { redirect, useNavigate } from 'react-router-dom';
 const About = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const navigate=useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+
+  const redirect=()=>{
+    navigate('/')
+  }
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+
 
   const features = [
     {
@@ -87,7 +95,7 @@ const About = () => {
               content to help users identify recipes from dish photos and share their culinary creations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-orange-500 to-pink-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
+              <button onClick={redirect} className="bg-gradient-to-r from-orange-500 to-pink-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
                 Get Started
               </button>
               <button className="border border-orange-300 text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-colors duration-200">
