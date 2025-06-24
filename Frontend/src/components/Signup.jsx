@@ -47,13 +47,18 @@ const Signup = () => {
            
           </div>
 
-          
+         
           <div className="space-y-6">
            
+            <form  onSubmit={(e)=>{
+                e.preventDefault();
+                signup()
+              }}>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <User className="h-5 w-5 text-gray-400" />
               </div>
+              
               <input
                 type="text"
                 placeholder="Full name"
@@ -100,16 +105,17 @@ const Signup = () => {
                 )}
               </button>
             </div>
- 
 
-          
+         
             <button
-              onClick={signup}
+              type='submit'
               disabled={isLoading}
               className={`w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 ${
                 isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:from-orange-700 hover:to-red-700'
               }`}
             >
+
+             
               {isLoading ? (
                 <div className="flex items-center justify-center">
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
@@ -119,8 +125,8 @@ const Signup = () => {
                 'Create Account'
               )}
             </button>
-
-           
+             </form>
+          
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-200"></div>
@@ -144,6 +150,7 @@ const Signup = () => {
               <span className="text-gray-700 font-medium group-hover:text-gray-900">Continue with Google</span>
             </Link>
           </div>
+          
 
          
           <div className="mt-8 text-center">
